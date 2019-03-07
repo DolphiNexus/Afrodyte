@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar class="header">
     <ion-buttons slot="end">
       <ion-button [routerLink]="['/new-task']">
         <ion-icon slot="icon-only" name="add"></ion-icon>
@@ -22,9 +22,10 @@
     </ion-list>
   </div>
   <div *ngIf="items.length == 0" class="empty-list">
-    Please create your first task.
+    Take a picture of a piece of clothing!
   </div>
 </ion-content>
+
 <ion-footer (click)="logout()">
   <ion-toolbar color="medium">
     <ion-title>Log out</ion-title>
