@@ -5,6 +5,8 @@ import { LoadingController, ToastController, AlertController } from '@ionic/angu
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { ActivatedRoute, Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-details',
@@ -12,6 +14,11 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./details.page.scss'],
 })
 export class DetailsPage implements OnInit {
+
+  private appId: string;
+  private appCode: string;
+
+  public weather: any;
 
   validations_form: FormGroup;
   image: any;
@@ -27,20 +34,42 @@ export class DetailsPage implements OnInit {
     private webview: WebView,
     private alertCtrl: AlertController,
     private route: ActivatedRoute,
-    private router: Router
-  ) { }
+    private router: Router,
+    private http: HttpClient
+  ) {
+    this.appId = "8jmIcMRZ5dDIuZqi7xDy";
+    this.appCode = "GsY8bsdL-liCTU0KexRlnQ";
+    this.weather = [];
+  }
 
   ngOnInit() {
     this.getData();
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(position => {
+        this.getWeather(position.coords);
+      });
+    } else {
+      console.error("The phone does not support geolocation...");
+    }
   }
 
-  getData(){
+  public getWeather(coordinates: any) {
+    this.http.jsonp("https://weather.cit.api.here.com/weather/1.0/report.json?product=forecast_7days_simple&latitude=" + coordinates.latitude + "&longitude=" + coordinates.longitude + "&app_id=" + this.appId + "&app_code=" + this.appCode, "jsonpCallback")
+      .pipe(map(result => (<any>result).dailyForecasts.forecastLocation))
+      .subscribe(result => {
+        this.weather = result.forecast;
+      }, error => {
+        console.error(error);
+      });
+  }
+
+  getData() {
     this.route.data.subscribe(routeData => {
-     let data = routeData['data'];
-     if (data) {
-       this.item = data;
-       this.image = this.item.image;
-     }
+      let data = routeData['data'];
+      if (data) {
+        this.item = data;
+        this.image = this.item.image;
+      }
     })
     this.validations_form = this.formBuilder.group({
       title: new FormControl(this.item.title, Validators.required),
@@ -48,18 +77,18 @@ export class DetailsPage implements OnInit {
     });
   }
 
-  onSubmit(value){
+  onSubmit(value) {
     let data = {
       title: value.title,
       description: value.description,
       image: this.image
     }
-    this.firebaseService.updateTask(this.item.id,data)
-    .then(
-      res => {
-        this.router.navigate(["/home"]);
-      }
-    )
+    this.firebaseService.updateTask(this.item.id, data)
+      .then(
+        res => {
+          this.router.navigate(["/home"]);
+        }
+      )
   }
 
   async delete() {
@@ -71,18 +100,18 @@ export class DetailsPage implements OnInit {
           text: 'No',
           role: 'cancel',
           cssClass: 'secondary',
-          handler: () => {}
+          handler: () => { }
         },
         {
           text: 'Yes',
           handler: () => {
             this.firebaseService.deleteTask(this.item.id)
-            .then(
-              res => {
-                this.router.navigate(["/home"]);
-              },
-              err => console.log(err)
-            )
+              .then(
+                res => {
+                  this.router.navigate(["/home"]);
+                },
+                err => console.log(err)
+              )
           }
         }
       ]
@@ -90,30 +119,30 @@ export class DetailsPage implements OnInit {
     await alert.present();
   }
 
-  openImagePicker(){
+  openImagePicker() {
     this.imagePicker.hasReadPermission()
-    .then((result) => {
-      if(result == false){
-        // no callbacks required as this opens a popup which returns async
-        this.imagePicker.requestReadPermission();
-      }
-      else if(result == true){
-        this.imagePicker.getPictures({
-          maximumImagesCount: 1
-        }).then(
-          (results) => {
-            for (var i = 0; i < results.length; i++) {
-              this.uploadImageToFirebase(results[i]);
-            }
-          }, (err) => console.log(err)
-        );
-      }
-    }, (err) => {
-      console.log(err);
-    });
+      .then((result) => {
+        if (result == false) {
+          // no callbacks required as this opens a popup which returns async
+          this.imagePicker.requestReadPermission();
+        }
+        else if (result == true) {
+          this.imagePicker.getPictures({
+            maximumImagesCount: 1
+          }).then(
+            (results) => {
+              for (var i = 0; i < results.length; i++) {
+                this.uploadImageToFirebase(results[i]);
+              }
+            }, (err) => console.log(err)
+          );
+        }
+      }, (err) => {
+        console.log(err);
+      });
   }
 
-  async uploadImageToFirebase(image){
+  async uploadImageToFirebase(image) {
     const loading = await this.loadingCtrl.create({
       message: 'Please wait...'
     });
@@ -128,13 +157,13 @@ export class DetailsPage implements OnInit {
 
     //uploads img to firebase storage
     this.firebaseService.uploadImage(image_src, randomId)
-    .then(photoURL => {
-      this.image = photoURL;
-      loading.dismiss();
-      toast.present();
-    }, err =>{
-      console.log(err);
-    })
+      .then(photoURL => {
+        this.image = photoURL;
+        loading.dismiss();
+        toast.present();
+      }, err => {
+        console.log(err);
+      })
   }
 
   async presentLoading(loading) {

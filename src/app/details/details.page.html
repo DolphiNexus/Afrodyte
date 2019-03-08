@@ -20,6 +20,7 @@
       </ion-col>
     </ion-row>
   </div>
+  
   <form [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)">
     <ion-item>
       <ion-label position="floating" color="primary">Title</ion-label>
@@ -33,4 +34,27 @@
   </form>
   <ion-button class="delete-button" expand="block" color="danger" (click)="delete()">Delete</ion-button>
 
+  <div>
+  <ion-row>
+    <ion-col size="6" offset="5">
+      <div style="background-color:transparent; margin: 0; transform: translate(-50%, -50%); margin-top: 40%;">
+        <p *ngIf="weather.length == 0">Searching...</p>
+        <div *ngIf="weather.length > 0">
+            <table style="width: 100%; text-align: center">
+                <thead></thead>
+                <tbody>
+                    <tr>
+                        <td *ngFor="let forecast of weather">
+                            <img [src]="forecast.iconLink" />
+                            <p>{{ ((forecast.highTemperature *1.8) + 32) .toFixed(1) }}F</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </ion-col>
+  </ion-row>
+</div>
+  
 </ion-content>
