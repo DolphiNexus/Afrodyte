@@ -22,14 +22,21 @@
   </div>
   
   <form [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)">
-    <ion-item>
-      <ion-label position="floating" color="primary">Title</ion-label>
-      <ion-input type="text" formControlName="title"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating" color="primary">Description</ion-label>
-      <ion-input type="text" formControlName="description"></ion-input>
-    </ion-item>
+
+    <ion-list>
+        <ion-list-header>Clothes Type</ion-list-header>
+    
+        <ion-item>
+          <ion-label>Clothes</ion-label>
+          <ion-select value="hat" okText="Okay" cancelText="Dismiss" formControlName="description">
+            <ion-select-option value="hat">Hat</ion-select-option>
+            <ion-select-option value="shirt">Shirt</ion-select-option>
+            <ion-select-option value="pants">Pants</ion-select-option>
+            <ion-select-option value="shoes">Shoes</ion-select-option>
+          </ion-select>
+        </ion-item>
+      
+      </ion-list>
     <ion-button class="submit-button" expand="block" type="submit" [disabled]="!validations_form.valid">Save</ion-button>
   </form>
   <ion-button class="delete-button" expand="block" color="danger" (click)="delete()">Delete</ion-button>

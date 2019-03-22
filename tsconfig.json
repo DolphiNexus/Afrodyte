@@ -5,7 +5,8 @@
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
-    "module": "es2015",
+    "allowSyntheticDefaultImports": true,
+    "module": "commonjs",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -17,5 +18,6 @@
       "es2018",
       "dom"
     ]
-  }
+  },
+  "allowJs": true
 }
