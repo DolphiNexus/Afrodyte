@@ -1,10 +1,13 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar class="header">
     <ion-title>Log In</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding class="form-content">
+
+  <img src="../../assets/imgs/logo.png">
+
   <form class="form" [formGroup]="validations_form" (ngSubmit)="tryLogin(validations_form.value)">
     <ion-item>
       <ion-label position="floating" color="primary">Email</ion-label>

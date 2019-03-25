@@ -4,11 +4,11 @@ import { LoadingController, MenuController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.page.html',
-  styleUrls: ['./home.page.scss'],
+  selector: 'app-closet',
+  templateUrl: './closet.page.html',
+  styleUrls: ['./closet.page.scss'],
 })
-export class HomePage implements OnInit {
+export class ClosetPage implements OnInit {
 
   items: Array<any>;
 
@@ -42,15 +42,6 @@ export class HomePage implements OnInit {
 
   async presentLoading(loading) {
     return await loading.present();
-  }
-
-  logout(){
-    this.authService.doLogout()
-    .then(res => {
-      this.router.navigate(["/login"]);
-    }, err => {
-      console.log(err);
-    })
   }
 
   openFirst() {

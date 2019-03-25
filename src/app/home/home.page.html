@@ -1,5 +1,11 @@
 <ion-header>
   <ion-toolbar class="header">
+      <ion-buttons slot="start">
+          <ion-menu-button autoHide="false">
+              <ion-icon slot="icon-only" name="menu"></ion-icon>
+          </ion-menu-button>
+        </ion-buttons>
+
     <ion-buttons slot="end">
       <ion-button [routerLink]="['/new-task']">
         <ion-icon slot="icon-only" name="add"></ion-icon>
@@ -10,20 +16,9 @@
 </ion-header>
 
 <ion-content *ngIf="items" class="list-mini-content" padding>
-  <div *ngIf="items.length > 0" class="list-mini">
-    <ion-list>
-      <ion-item *ngFor="let item of items" [routerLink]="['/details', item.payload.doc.id]">
-        <ion-thumbnail slot="start">
-          <img [src]="item.payload.doc.data().image">
-        </ion-thumbnail>
-        <ion-label>{{item.payload.doc.data().title}}</ion-label>
-        <ion-button fill="clear" slot="end">Details</ion-button>
-      </ion-item>
-    </ion-list>
-  </div>
-  <div *ngIf="items.length == 0" class="empty-list">
-    Take a picture of a piece of clothing!
-  </div>
+  <ion-item *ngFor="let item of items" [routerLink]="['/details', item.payload.doc.id]">
+    <img [src]="item.payload.doc.data().image">
+  </ion-item>
 </ion-content>
 
 <ion-footer (click)="logout()">

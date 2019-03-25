@@ -11,12 +11,14 @@
   <div>
     <ion-row>
       <ion-col size="6" offset="3">
-        <img [src]="image" alt="this is the image"/>
+        <img [src]="image" alt="this is the image" />
       </ion-col>
     </ion-row>
-    <ion-row>
+    <ion-row no-padding>
       <ion-col size="6" offset="3">
-        <ion-button fill="outline" expand="block" size="small" (click)="openImagePicker()">Change Picture</ion-button>
+        <ion-button fill="outline" expand="block" size="small" (click)="openCam()">
+          <ion-icon name="camera"></ion-icon>Change Picture
+        </ion-button>
       </ion-col>
     </ion-row>
   </div>
@@ -25,11 +27,23 @@
       <ion-label position="floating" color="primary">Title</ion-label>
       <ion-input type="text" formControlName="title"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label position="floating" color="primary">Description</ion-label>
-      <ion-input type="text" formControlName="description"></ion-input>
-    </ion-item>
-    <ion-button class="submit-button" expand="block" type="submit" [disabled]="!validations_form.valid">Save</ion-button>
+    
+    <ion-list>
+        <ion-list-header>Clothes Type</ion-list-header>
+    
+        <ion-item>
+          <ion-label>Clothes</ion-label>
+          <ion-select value="hat" okText="Okay" cancelText="Dismiss" formControlName="description">
+            <ion-select-option value="hat">Hat</ion-select-option>
+            <ion-select-option value="shirt">Shirt</ion-select-option>
+            <ion-select-option value="pants">Pants</ion-select-option>
+            <ion-select-option value="shoes">Shoes</ion-select-option>
+          </ion-select>
+        </ion-item>
+      
+      </ion-list>
+    <ion-button class="submit-button" expand="block" type="submit" [disabled]="!validations_form.valid">Save
+    </ion-button>
   </form>
   <ion-button class="delete-button" expand="block" color="danger" (click)="delete()">Delete</ion-button>
 
