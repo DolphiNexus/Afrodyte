@@ -9,8 +9,6 @@ import { auth } from 'firebase/app';
 
 import { Router } from '@angular/router';
 
-import Vibrant from 'node-vibrant';
-
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html'

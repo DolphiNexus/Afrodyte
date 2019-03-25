@@ -188,9 +188,6 @@
     },
     "@ionic/angular-toolkit:page": {
       "styleext": "scss"
-    },
-    "scripts": [
-      "node_modules/node-vibrant/dist/vibrant.min.js"
-    ]
+    }
   }
 }
