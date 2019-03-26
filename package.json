@@ -45,6 +45,7 @@
         "moment": "^2.24.0",
         "ng2-swipe-cards": "^1.1.1",
         "rxjs": "~6.3.3",
+        "rxjs-compat": "^6.4.0",
         "zone.js": "~0.8.29"
     },
     "devDependencies": {

@@ -1,7 +1,7 @@
 <ion-app>
     <ion-split-pane>
       <ion-menu>
-        <ion-header>
+        <ion-header style="--background: #FF6961;">
           <ion-toolbar>
             <ion-title>Menu</ion-title>
           </ion-toolbar>
@@ -17,6 +17,9 @@
               </ion-item>
             </ion-menu-toggle>
           </ion-list>
+          <ion-button (click)="logout()">
+            <ion-title>Log out</ion-title>
+        </ion-button>
         </ion-content>
       </ion-menu>
       <ion-router-outlet main></ion-router-outlet>

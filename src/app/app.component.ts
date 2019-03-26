@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
+import { AuthService } from './services/auth.service';
 
 import { Router } from '@angular/router';
 
@@ -33,7 +34,8 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private router: Router,
-    public afAuth: AngularFireAuth
+    public afAuth: AngularFireAuth,
+    private authService: AuthService,
   ) {
     this.initializeApp();
   }
@@ -54,4 +56,14 @@ export class AppComponent {
       this.statusBar.styleDefault();
     });
   }
+
+  logout(){
+    this.authService.doLogout()
+    .then(res => {
+      this.router.navigate(["/login"]);
+    }, err => {
+      console.log(err);
+    })
+  }
+
 }
