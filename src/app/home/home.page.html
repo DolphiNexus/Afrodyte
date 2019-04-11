@@ -1,10 +1,10 @@
 <ion-header>
   <ion-toolbar class="header">
-      <ion-buttons slot="start">
-          <ion-menu-button autoHide="false">
-              <ion-icon slot="icon-only" name="menu"></ion-icon>
-          </ion-menu-button>
-        </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false">
+        <ion-icon slot="icon-only" name="menu"></ion-icon>
+      </ion-menu-button>
+    </ion-buttons>
 
     <ion-buttons slot="end">
       <ion-button [routerLink]="['/new-task']">
@@ -16,18 +16,17 @@
 </ion-header>
 
 <ion-content *ngIf="items" class="list-mini-content" padding>
+
   <ion-item *ngFor="let item of items" [routerLink]="['/details', item.payload.doc.id]">
     <ion-card>
-        <ion-card-header>
-          <ion-card-title>{{item.payload.doc.data().title}}</ion-card-title>
-        </ion-card-header>
-      
-        <ion-card-content>
-          <img [src]="item.payload.doc.data().image">
-          Clothing Type: <b>{{item.payload.doc.data().description}}</b>
-        </ion-card-content>
-      </ion-card>
+      <ion-card-header>
+        <ion-card-title>{{item.payload.doc.data().title}}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <img [src]="item.payload.doc.data().image">
+        Clothing Type: <b>{{item.payload.doc.data().description}}</b>
+      </ion-card-content>
+    </ion-card>
   </ion-item>
 </ion-content>
-
-

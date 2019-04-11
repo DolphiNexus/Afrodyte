@@ -94,4 +94,5 @@
     <plugin name="com-badrit-base64" spec="0.2.0" />
     <engine name="android" spec="7.0.0" />
     <engine name="ios" spec="4.5.5" />
+    <plugin name="cordova-plugin-camera-preview" spec="0.10.0" />
 </widget>

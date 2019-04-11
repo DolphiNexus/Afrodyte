@@ -14,15 +14,20 @@ img {
 .go-to-register
 {
   text-align: center;
-  margin-top: 20px;
 }
 
 .submit-btn
 {
-  margin-top: 40px;
+  margin-top: 20px;
+  --background: #FF6961;
+  --color: #FFFFFF;
 }
 
 .header{
   --background: #FF6961;
   --color: #FFFFFF;
+}
+
+.form {
+  width: 90%;
 }

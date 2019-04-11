@@ -14,8 +14,20 @@
       <ion-title>Closet</ion-title>
     </ion-toolbar>
   </ion-header>
-  
+
   <ion-content *ngIf="items" class="list-mini-content" padding>
+
+      <ion-item>
+          <ion-label>Filter</ion-label>
+          <ion-select value="none" okText="Okay" cancelText="Dismiss" formControlName="description">
+            <ion-select-option value="none">None</ion-select-option>
+            <ion-select-option value="hat">Hat</ion-select-option>
+            <ion-select-option value="shirt">Shirt</ion-select-option>
+            <ion-select-option value="pants">Pants</ion-select-option>
+            <ion-select-option value="shoes">Shoes</ion-select-option>
+          </ion-select>
+        </ion-item>
+
     <div *ngIf="items.length > 0" class="list-mini">
       <ion-list>
         <ion-item *ngFor="let item of items" [routerLink]="['/details', item.payload.doc.id]">
@@ -27,6 +39,7 @@
         </ion-item>
       </ion-list>
     </div>
+    
     <div *ngIf="items.length == 0" class="empty-list">
       Take a picture of a piece of clothing!
     </div>
