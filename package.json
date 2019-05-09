@@ -29,6 +29,8 @@
         "@ionic-native/status-bar": "5.0.0",
         "@ionic/angular": "4.0.2",
         "@ionic/pro": "2.0.3",
+        "@types/jest": "^24.0.12",
+        "@types/mocha": "^5.2.6",
         "com-badrit-base64": "0.2.0",
         "cordova-android": "7.0.0",
         "cordova-ios": "4.5.5",

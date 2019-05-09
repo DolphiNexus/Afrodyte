@@ -1,6 +1,28 @@
-ion-card{
+h1 {
   text-align: center;
 }
+
+.thumnails{
+  overflow-x: scroll;
+  overflow-y: hidden;
+  .list-thumbnail{
+    height: 100%;
+    white-space: nowrap;
+    .img-thumb{
+      display: inline-block;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 3px;
+      width: 40%;
+      margin:0 2px 0 0; 
+      line-height: 60px;
+    }
+  }
+}
+::-webkit-scrollbar { 
+  display: none; 
+}
+
 
 .empty-list {
   font-size: 22px;
