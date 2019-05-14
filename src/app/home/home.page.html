@@ -16,12 +16,16 @@
 </ion-header>
 
 <ion-content *ngIf="items">
+    <div class="scrolling-wrapper-flexbox">
+        <div class="card">
     <div *ngFor="let item of items">
-      <ion-item *ngIf="item.payload.doc.data().description == 'pants'" [routerLink]="['/details', item.payload.doc.id]" class="thumnails">
-        <div class="list-thumbnail">
+      <ion-item *ngIf="item.payload.doc.data().description == 'pants'" [routerLink]="['/details', item.payload.doc.id]">
+        <div class="picture">
             <img [src]="item.payload.doc.data().image">
       </div>
       </ion-item>
+    </div>
+    </div>
     </div>
     </ion-content>
 
