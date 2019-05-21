@@ -15,36 +15,54 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="items">
+<ion-content class="container" *ngIf="items">
+  <h1>Hats</h1>
     <div class="scrolling-wrapper-flexbox">
         <div class="card">
     <div *ngFor="let item of items">
-      <ion-item *ngIf="item.payload.doc.data().description == 'pants'" [routerLink]="['/details', item.payload.doc.id]">
         <div class="picture">
-            <img [src]="item.payload.doc.data().image">
+            <img *ngIf="item.payload.doc.data().description == 'hat'" [src]="item.payload.doc.data().image">
       </div>
-      </ion-item>
     </div>
     </div>
+  </div>
+</ion-content>
+
+<ion-content class="container" *ngIf="items">
+    <h1>Shirts</h1>
+      <div class="scrolling-wrapper-flexbox">
+          <div class="card">
+      <div *ngFor="let item of items">
+          <div class="picture">
+              <img *ngIf="item.payload.doc.data().description == 'shirt'" [src]="item.payload.doc.data().image">
+        </div>
+      </div>
+      </div>
     </div>
+  </ion-content>
+
+  <ion-content class="container" *ngIf="items">
+      <h1>Pants</h1>
+        <div class="scrolling-wrapper-flexbox">
+            <div class="card">
+        <div *ngFor="let item of items">
+            <div class="picture">
+                <img *ngIf="item.payload.doc.data().description == 'pants'" [src]="item.payload.doc.data().image">
+          </div>
+        </div>
+        </div>
+      </div>
     </ion-content>
 
-<ion-content *ngIf="items">
-<h1>Pants</h1>
-<div *ngFor="let item of items">
-  <ion-item *ngIf="item.payload.doc.data().description == 'pants'" [routerLink]="['/details', item.payload.doc.id]" class="thumnails">
-    <div class="list-thumbnail">
-    <ion-card class="img-thumb">
-      <ion-card-header>
-        <ion-card-title>{{item.payload.doc.data().title}}</ion-card-title>
-      </ion-card-header>
-
-      <ion-card-content>
-        <img [src]="item.payload.doc.data().image">
-        Clothing Type: <b>{{item.payload.doc.data().description}}</b>
-      </ion-card-content>
-    </ion-card>
-  </div>
-  </ion-item>
-</div>
-</ion-content>
+    <ion-content class="container" *ngIf="items">
+        <h1>Shoes</h1>
+          <div class="scrolling-wrapper-flexbox">
+              <div class="card">
+          <div *ngFor="let item of items">
+              <div class="picture">
+                  <img *ngIf="item.payload.doc.data().description == 'shoes'" [src]="item.payload.doc.data().image">
+            </div>
+          </div>
+          </div>
+        </div>
+      </ion-content>

@@ -2,6 +2,10 @@ h1 {
   text-align: center;
 }
 
+ion-card {
+  height: 90%;
+}
+
 .empty-list {
   font-size: 22px;
   font-weight: 500;
@@ -19,6 +23,10 @@ h1 {
   --width: 500px;
 }
 
+.container {
+  display: inline;
+}
+
 .scrolling-wrapper-flexbox {
   display: flex;
   flex-wrap: nowrap;
@@ -32,12 +40,7 @@ h1 {
 
 img {
   border: 0;
-  width: 40%;
-  display: inline-block;
-  float: left;
-}
-
-.picture {
+  width: 20%;
   display: inline-block;
   float: left;
 }
