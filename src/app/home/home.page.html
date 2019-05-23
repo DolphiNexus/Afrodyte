@@ -15,54 +15,56 @@
   </ion-toolbar>
 </ion-header>
 
+<br>
+
 <ion-content class="container" *ngIf="items">
-  <h1>Hats</h1>
-    <div class="scrolling-wrapper-flexbox">
-        <div class="card">
-    <div *ngFor="let item of items">
+  <h1><span>Hats</span></h1>
+  <div class="scrolling-wrapper-flexbox" style="margin-left: 10px;">
+    <div class="card">
+      <div *ngFor="let item of items">
         <div class="picture">
-            <img *ngIf="item.payload.doc.data().description == 'hat'" [src]="item.payload.doc.data().image">
+          <img *ngIf="item.payload.doc.data().description == 'hat'" [src]="item.payload.doc.data().image">
+        </div>
       </div>
-    </div>
     </div>
   </div>
 </ion-content>
 
 <ion-content class="container" *ngIf="items">
-    <h1>Shirts</h1>
-      <div class="scrolling-wrapper-flexbox">
-          <div class="card">
+  <h1><span>Shirts</span></h1>
+  <div class="scrolling-wrapper-flexbox" style="margin-left: 10px;">
+    <div class="card">
       <div *ngFor="let item of items">
-          <div class="picture">
-              <img *ngIf="item.payload.doc.data().description == 'shirt'" [src]="item.payload.doc.data().image">
+        <div class="picture">
+          <img *ngIf="item.payload.doc.data().description == 'shirt'" [src]="item.payload.doc.data().image">
         </div>
-      </div>
       </div>
     </div>
-  </ion-content>
+  </div>
+</ion-content>
 
-  <ion-content class="container" *ngIf="items">
-      <h1>Pants</h1>
-        <div class="scrolling-wrapper-flexbox">
-            <div class="card">
-        <div *ngFor="let item of items">
-            <div class="picture">
-                <img *ngIf="item.payload.doc.data().description == 'pants'" [src]="item.payload.doc.data().image">
-          </div>
-        </div>
+<ion-content class="container" *ngIf="items">
+  <h1><span>Pants</span></h1>
+  <div class="scrolling-wrapper-flexbox" style="margin-left: 10px;">
+    <div class="card">
+      <div *ngFor="let item of items">
+        <div class="picture">
+          <img *ngIf="item.payload.doc.data().description == 'pants'" [src]="item.payload.doc.data().image">
         </div>
       </div>
-    </ion-content>
+    </div>
+  </div>
+</ion-content>
 
-    <ion-content class="container" *ngIf="items">
-        <h1>Shoes</h1>
-          <div class="scrolling-wrapper-flexbox">
-              <div class="card">
-          <div *ngFor="let item of items">
-              <div class="picture">
-                  <img *ngIf="item.payload.doc.data().description == 'shoes'" [src]="item.payload.doc.data().image">
-            </div>
-          </div>
-          </div>
+<ion-content class="container" *ngIf="items">
+  <h1><span>Shoes</span></h1>
+  <div class="scrolling-wrapper-flexbox" style="margin-left: 10px;">
+    <div class="card">
+      <div *ngFor="let item of items">
+        <div class="picture">
+          <img *ngIf="item.payload.doc.data().description == 'shoes'" [src]="item.payload.doc.data().image">
         </div>
-      </ion-content>
+      </div>
+    </div>
+  </div>
+</ion-content>
