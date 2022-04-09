@@ -46,7 +46,7 @@
         "cordova-plugin-whitelist": "^1.3.3",
         "core-js": "^2.5.4",
         "firebase": "^5.7.0",
-        "moment": "^2.24.0",
+        "moment": "^2.29.2",
         "ng2-swipe-cards": "^1.1.1",
         "rxjs": "~6.3.3",
         "rxjs-compat": "^6.4.0",
